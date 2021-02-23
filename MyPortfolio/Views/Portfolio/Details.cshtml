@@ -1,0 +1,38 @@
+﻿@model Portfolio
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container" style="padding-top:120px">
+    <h1>Details</h1>
+
+    <div>
+        <h4>Portfolio</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ProjectName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+            <dd class="col-sm-10">
+                <img src="~/assets/img/portfolio/@Model.Image" class="img-thumbnail" style="border-radius:100%;width:60px;height:50px" />
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

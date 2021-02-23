@@ -1,0 +1,87 @@
+﻿@model PaginatedList<Owner>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container" style="padding-top:120px">
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <form asp-action="Index" asp-controller="Owner" method="get">
+        <input type="text" name="searchOwner" placeholder="Search By Owner Name , Profile Or City " style="width:300px" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Search" class="btn btn-primary" /> |
+        <a asp-action="Index">Get All Owners</a>
+    </form>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-action="Index" asp-controller="Owner" asp-route-sortOrder="@ViewData["OwnerName"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">OwnerName</a>
+                </th>
+                <th>
+                    Image
+                </th>
+                <th>
+                    <a asp-action="Index" asp-controller="Owner" asp-route-sortOrder="@ViewData["Profile"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">Profile</a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-controller="Owner" asp-route-sortOrder="@ViewData["City"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]">City</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OwnerName)
+                    </td>
+                    <td>
+                        <img src="~/assets/img/@item.Image" class="img-thumbnail" style="border-radius:100%;width:60px;height:50px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Profile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address.City)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-eye"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @{
+        var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.NextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index" asp-controller="Owner"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index" asp-controller="Owner"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+
+</div>
