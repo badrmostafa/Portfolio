@@ -37,19 +37,19 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
 
                     
-                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                    {
+                    @*@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {*@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://localhost:44384/Owner/Index">Owner</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://localhost:44384/Portfolio/Index">Portfolio</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://localhost:44384/Contact/Index">Contact</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://localhost:44384/Address/Index">Address</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://localhost:44384/About/Index">About</a></li>
-                    }
+                    @*}*@
 
 
                     @*<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://localhost:44384/Identity/Account/Login">Login</a></li>
         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="https://localhost:44384/Identity/Account/Register">Register</a></li>*@
-                    <partial name="_LoginPartial.cshtml" />
+                    @*<partial name="_LoginPartial.cshtml" />*@
                 </ul>
             </div>
         </div>
